@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
-const validateForm = (error) => {
-  let valid = true;
-  Object.values(error).forEach((val) => val.length > 0 && (valid = false));
-  return valid;
-};
+
+let emailError = 1;
+let passwordError = 1;
 
 class login extends Component {
   state = {
@@ -21,16 +19,6 @@ class login extends Component {
     },
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    event.preventDefault();
-    if (validateForm(this.state.error)) {
-      console.info("Valid Form");
-    } else {
-      console.error("Invalid Form");
-    }
-  };
-
   handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -39,12 +27,23 @@ class login extends Component {
     switch (name) {
       case "email":
         error.email = validEmailRegex.test(value) ? "" : "Email is not valid!";
+        if (error.email === "") {
+          emailError = 0;
+        } else {
+          emailError = 1;
+        }
+
         break;
       case "password":
         error.password =
           value.length < 8
             ? "Password must be at least 8 characters long!"
             : "";
+        if (error.password === "") {
+          passwordError = 0;
+        } else {
+          passwordError = 1;
+        }
         break;
       default:
         break;
@@ -89,9 +88,9 @@ class login extends Component {
                 <span className="error">{this.state.error.password}</span>
               )}
             </div>
-            
-              <button type="submit">Log In</button>
-            
+            <Link to="/dashboard">
+              <button type="submit" disabled={emailError || passwordError}>Log In</button>
+            </Link>
           </form>
         </div>
       </div>
