@@ -9,20 +9,19 @@ class dashboard extends Component {
     cols: "",
   };
 
-  fileHandler=(event)=>{
+  fileHandler = (event) => {
     let fileObj = event.target.files[0];
-    ExcelRenderer(fileObj, (error,resp)=>{
-      if(error){
+    ExcelRenderer(fileObj, (error, resp) => {
+      if (error) {
         console.log(error);
-        
-      }else{
+      } else {
         this.setState({
           cols: resp.cols,
-          rows: resp.rows
+          rows: resp.rows,
         });
       }
     });
-  }
+  };
 
   render() {
     return (
@@ -37,8 +36,16 @@ class dashboard extends Component {
         </div>
         <div className="dashboard-body">
           <div className="excel-upload">
-            <input type="file" onChange={this.fileHandler} style={{"padding":"10px"}} />
-            <div>
+            <p>Upload Excel file</p>
+            <div className="excel-input">
+              <input
+                className="excel-input-button"
+                type="file"
+                onChange={this.fileHandler}
+                style={{ padding: "10px" }}
+              />
+            </div>
+            <div className="excel-output">
               {this.state.rows && (
                 <OutTable
                   data={this.state.rows}

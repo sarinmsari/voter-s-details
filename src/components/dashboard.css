@@ -25,3 +25,27 @@
   float: right;
   font-size: xx-small;
 }
+.dashboard-body{
+  margin-top:5em;
+}
+.dashboard-body .excel-input{
+  background-color: rgb(33, 170, 175);
+  border-radius: 10px;
+  text-align: center;
+}
+.dashboard-body .excel-input input{
+  color: white;
+}
+.dashboard-body .excel-output{
+  margin: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+.excel-upload p{
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.excel-output table tr td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
