@@ -37,3 +37,7 @@ body {
     border:0px;
     background-color: turquoise;
 }
+.error{
+  color: red;
+  font-size: xx-small;
+}
