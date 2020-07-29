@@ -1,9 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { OutTable, ExcelRenderer } from "react-excel-renderer";
 import "./dashboard.css";
 
 class dashboard extends Component {
-  state = {};
+  state = {
+    rows: "",
+    cols: "",
+  };
+
+  fileHandler=(event)=>{
+    let fileObj = event.target.files[0];
+    ExcelRenderer(fileObj, (error,resp)=>{
+      if(error){
+        console.log(error);
+        
+      }else{
+        this.setState({
+          cols: resp.cols,
+          rows: resp.rows
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <div className="dashboard-container">
@@ -13,6 +33,21 @@ class dashboard extends Component {
             <Link to="/login">
               <button className="logout">Log Out</button>
             </Link>
+          </div>
+        </div>
+        <div className="dashboard-body">
+          <div className="excel-upload">
+            <input type="file" onChange={this.fileHandler} style={{"padding":"10px"}} />
+            <div>
+              {this.state.rows && (
+                <OutTable
+                  data={this.state.rows}
+                  columns={this.state.cols}
+                  tabelClassName="ExcelTable"
+                  tableHeaderRowClassName="Heading"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
