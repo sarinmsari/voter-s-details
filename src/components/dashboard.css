@@ -1,0 +1,27 @@
+.dashboard-header {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: teal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.dashboard-header .left-section {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  float: left;
+  padding: 10px;
+}
+.dashboard-header .right-section {
+  font-family: Arial, Helvetica, sans-serif;
+  float: right;
+  padding:10px;
+}
+.dashboard-header .right-section .logout {
+  border: 0;
+  border-radius: 10px;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  float: right;
+  font-size: xx-small;
+}

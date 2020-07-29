@@ -56,7 +56,7 @@ class login extends Component {
     return (
       <div className="container">
         <div className="form-wrapper">
-          <div className="header">LOG IN</div>
+          <div className="login-header">LOG IN</div>
           <form className="login-form" onSubmit={this.handleSubmit} noValidate>
             <div className="email">
               <label htmlFor="email">Email:</label>
@@ -89,7 +89,7 @@ class login extends Component {
               )}
             </div>
             <Link to="/dashboard">
-              <button type="submit" disabled={emailError || passwordError}>Log In</button>
+              <button type="submit" className="login-button" disabled={emailError || passwordError}>Log In</button>
             </Link>
           </form>
         </div>
