@@ -1,58 +1,79 @@
+import axios from "axios";
 import React, { Component } from "react";
-import { OutTable, ExcelRenderer } from "react-excel-renderer";
+import Header from "./header";
 import "./dashboard.css";
-import Header from './header';
 
-class dashboard extends Component {
+class Dashboard extends Component {
   state = {
-    rows: "",
-    cols: "",
+    selectedFile: null,
+  };
+  fileData = () => {
+    if (this.state.selectedFile) {
+      if (
+        this.state.selectedFile.type !==
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      ) {
+        return (
+          <div className="upload-error">
+            <p>Upload an Excel file!</p>
+          </div>
+        );
+      } else {
+        return (
+          <div className="file-details">
+            <button onClick={this.onFileUpload}>Upload</button><br/>
+            <h2>File Details:</h2>
+            <p>File Name: {this.state.selectedFile.name}</p>
+            <p>File Type: {this.state.selectedFile.type}</p>
+            <p>
+              Last Modified:{" "}
+              {this.state.selectedFile.lastModifiedDate.toDateString()}
+            </p>
+          </div>
+        );
+      }
+    } else {
+      return (
+        <div className="upload-error">
+          <p>Choose a file to upload!</p>
+        </div>
+      );
+    }
   };
 
-  fileHandler = (event) => {
-    let fileObj = event.target.files[0];
-    ExcelRenderer(fileObj, (error, resp) => {
-      if (error) {
-        console.log(error);
-      } else {
-        this.setState({
-          cols: resp.cols,
-          rows: resp.rows,
-        });
-      }
-    });
+  onFileChange = (event) => {
+    this.setState({ selectedFile: event.target.files[0] });
+  };
+
+  onFileUpload = () => {
+    const formData = new FormData();
+
+    formData.append(
+      "myFile",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+
+    console.log(this.state.selectedFile);
+
+    axios.post("api/uploadfile", formData);
   };
 
   render() {
     return (
-      <div className="dashboard-container">
-        <Header/>
+      <div>
+        <Header />
         <div className="dashboard-body">
-          <div className="excel-upload">
-            <p>Upload Excel file</p>
-            <div className="excel-input">
-              <input
-                className="excel-input-button"
-                type="file"
-                onChange={this.fileHandler}
-                style={{ padding: "10px" }}
-              />
-            </div>
-            <div className="excel-output">
-              {this.state.rows && (
-                <OutTable
-                  data={this.state.rows}
-                  columns={this.state.cols}
-                  tabelClassName="ExcelTable"
-                  tableHeaderRowClassName="Heading"
-                />
-              )}
-            </div>
+          <h3>Upload Excel file</h3>
+          <div className="excel-input">
+            <input type="file" id="input-file" onChange={this.onFileChange} />
+            
           </div>
+          {this.fileData()}
         </div>
       </div>
     );
   }
 }
 
-export default dashboard;
+export default Dashboard;
