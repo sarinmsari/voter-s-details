@@ -6,10 +6,13 @@ function Header() {
   return (
     <>
       <div className="header-container">
-          <div className="left-section">Dashboard</div>
+          <Link to="/dashboard" className="left-section">Dashboard</Link>
           <div className="right-section">
-            <Link to="/login">
-              <button className="logout">Log Out</button>
+            <Link to="/login" className="Link">
+              Log Out
+            </Link>
+            <Link to="/output" className="Link">
+              <b>VIEW</b>
             </Link>
           </div>
         </div>
