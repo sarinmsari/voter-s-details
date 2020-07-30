@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { OutTable, ExcelRenderer } from "react-excel-renderer";
 import "./dashboard.css";
+import Header from './header';
 
 class dashboard extends Component {
   state = {
@@ -26,14 +26,7 @@ class dashboard extends Component {
   render() {
     return (
       <div className="dashboard-container">
-        <div className="dashboard-header">
-          <div className="left-section">Dashboard</div>
-          <div className="right-section">
-            <Link to="/login">
-              <button className="logout">Log Out</button>
-            </Link>
-          </div>
-        </div>
+        <Header/>
         <div className="dashboard-body">
           <div className="excel-upload">
             <p>Upload Excel file</p>
