@@ -13,7 +13,6 @@ function Header(props) {
           <Link to="/login" className="Link">
             Log Out
           </Link>
-          {console.log(props.file)}
           <Link
             className="Link"
             to={{ pathname: "/selectOutput", file: props.file }}

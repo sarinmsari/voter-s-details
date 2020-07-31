@@ -18,8 +18,6 @@ class ExcelOutput extends Component {
   }
 
   localBodyHandler = () => {
-    console.log("district id: " + this.state.districtId);
-
     if (this.state.districtId === "13") {
       this.setState({
         localBodyData: [
@@ -119,7 +117,6 @@ class ExcelOutput extends Component {
   };
 
   wardHandler = () => {
-    console.log("local body id: " + this.state.localBodyId);
     if (this.state.districtId === "13" && this.state.localBodyId === "53") {
       this.setState({
         wardData: [
@@ -222,7 +219,6 @@ class ExcelOutput extends Component {
               <select
                 id="ward"
                 name="ward"
-                onClick={console.log("ward id: " + this.state.wardId)}
                 onChange={(event) => {
                   this.setState({ wardId: event.target.value });
                 }}
@@ -239,9 +235,6 @@ class ExcelOutput extends Component {
               <select
                 id="pollingBooth"
                 name="pollingBooth"
-                onClick={console.log(
-                  "polling booth id: " + this.state.pollingBoothId
-                )}
                 onChange={(event) => {
                   this.setState({ pollingBoothId: event.target.value });
                 }}
