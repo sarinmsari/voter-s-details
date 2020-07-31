@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 import "./excelOutput.css";
 
 class ExcelOutput extends Component {
-  state = {
-    districtId: "",
-    localBodyId: "",
-    wardId: "",
-    pollingBoothId: "",
-    localBodyData: [],
-    wardData: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: props.location.file,
+      districtId: "",
+      localBodyId: "",
+      wardId: "",
+      pollingBoothId: "",
+      localBodyData: [],
+      wardData: [],
+    };
+  }
 
   localBodyHandler = () => {
     console.log("district id: " + this.state.districtId);
@@ -233,12 +237,14 @@ class ExcelOutput extends Component {
               </select>
             </div>
           </div>
-          <Link to="/viewOutput">
+
+          <Link to={{ pathname: "/viewOutput", file: this.state.file }}>
             <button type="submit" className="select-output-view-button">
               View
             </button>
           </Link>
         </div>
+        
       </div>
     );
   }

@@ -62,7 +62,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header file={this.state.selectedFile}/>
         <div className="dashboard-body">
           <h3>Upload Excel file</h3>
           <div className="excel-input">
