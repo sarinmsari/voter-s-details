@@ -151,17 +151,20 @@ class ExcelOutput extends Component {
 
   fileHandler = (event) => {
     let fileObj = this.state.file;
-    
-    ExcelRenderer(fileObj, (error, resp) => {
-      if (error) {
-        console.log(error);
-      } else {
-        this.setState({
-          cols: resp.cols,
-          rows: resp.rows,
-        });
-      }
-    });
+    if (fileObj) {
+      ExcelRenderer(fileObj, (error, resp) => {
+        if (error) {
+          console.log(error);
+        } else {
+          this.setState({
+            cols: resp.cols,
+            rows: resp.rows,
+          });
+        }
+      });
+    } else {
+      alert("No file uploaded");
+    }
   };
 
   render() {
