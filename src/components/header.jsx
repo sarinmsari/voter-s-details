@@ -11,7 +11,7 @@ function Header() {
             <Link to="/login" className="Link">
               Log Out
             </Link>
-            <Link to="/output" className="Link">
+            <Link to="/selectOutput" className="Link">
               <b>VIEW</b>
             </Link>
           </div>

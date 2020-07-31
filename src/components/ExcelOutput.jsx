@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./header";
+import { Link } from "react-router-dom";
 import "./excelOutput.css";
 
 class ExcelOutput extends Component {
@@ -115,7 +116,7 @@ class ExcelOutput extends Component {
 
   wardHandler = () => {
     console.log("local body id: " + this.state.localBodyId);
-    if (this.state.districtId==="13" && this.state.localBodyId === "53") {
+    if (this.state.districtId === "13" && this.state.localBodyId === "53") {
       this.setState({
         wardData: [
           "Parappuram",
@@ -148,7 +149,7 @@ class ExcelOutput extends Component {
     return (
       <div className="container">
         <Header />
-        <div className="output-body">
+        <div className="select-body">
           <div className="selection">
             <div className="district">
               <select
@@ -216,7 +217,9 @@ class ExcelOutput extends Component {
               <select
                 id="pollingBooth"
                 name="pollingBooth"
-                onClick={console.log("polling booth id: " + this.state.pollingBoothId)}
+                onClick={console.log(
+                  "polling booth id: " + this.state.pollingBoothId
+                )}
                 onChange={(event) => {
                   this.setState({ pollingBoothId: event.target.value });
                 }}
@@ -230,6 +233,18 @@ class ExcelOutput extends Component {
               </select>
             </div>
           </div>
+          <Link
+            to={"/viewOutput"} params={{
+              districtId: this.state.districtId,
+              localBodyId: this.state.localBodyId,
+              wardId: this.state.wardId,
+              pollingBoothId: this.state.pollingBoothId
+            }}
+          >
+            <button type="submit" className="select-output-view-button">
+              View
+            </button>
+          </Link>
         </div>
       </div>
     );
