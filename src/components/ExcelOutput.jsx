@@ -151,7 +151,7 @@ class ExcelOutput extends Component {
         <Header />
         <div className="select-body">
           <div className="selection">
-            <div className="district">
+            <div className="district select-box">
               <select
                 id="district"
                 name="district"
@@ -161,7 +161,7 @@ class ExcelOutput extends Component {
                 }}
               >
                 <option value="" selected>
-                  select district
+                  select District
                 </option>
                 <option value="1">Thiruvananthapuram</option>
                 <option value="2">Kollam</option>
@@ -179,7 +179,7 @@ class ExcelOutput extends Component {
                 <option value="14">Kazargod</option>
               </select>
             </div>
-            <div className="local-body">
+            <div className="local-body select-box">
               <select
                 id="local-body"
                 name="local-body"
@@ -188,7 +188,7 @@ class ExcelOutput extends Component {
                   this.setState({ localBodyId: event.target.value });
                 }}
               >
-                <option>select local body</option>
+                <option>select Local Body</option>
                 {this.state.localBodyData.map((item, key) => (
                   <option key={key} value={key}>
                     {item}
@@ -196,7 +196,7 @@ class ExcelOutput extends Component {
                 ))}
               </select>
             </div>
-            <div className="ward">
+            <div className="ward select-box">
               <select
                 id="ward"
                 name="ward"
@@ -205,7 +205,7 @@ class ExcelOutput extends Component {
                   this.setState({ wardId: event.target.value });
                 }}
               >
-                <option>select ward</option>
+                <option>select Ward</option>
                 {this.state.wardData.map((item, key) => (
                   <option key={key} value={key}>
                     {item}
@@ -213,7 +213,7 @@ class ExcelOutput extends Component {
                 ))}
               </select>
             </div>
-            <div className="pollingBooth">
+            <div className="pollingBooth select-box">
               <select
                 id="pollingBooth"
                 name="pollingBooth"
@@ -224,7 +224,7 @@ class ExcelOutput extends Component {
                   this.setState({ pollingBoothId: event.target.value });
                 }}
               >
-                <option>select polling booth</option>
+                <option>select Polling Booth</option>
                 {this.state.wardData.map((item, key) => (
                   <option key={key} value={key}>
                     {item}
@@ -233,14 +233,7 @@ class ExcelOutput extends Component {
               </select>
             </div>
           </div>
-          <Link
-            to={"/viewOutput"} params={{
-              districtId: this.state.districtId,
-              localBodyId: this.state.localBodyId,
-              wardId: this.state.wardId,
-              pollingBoothId: this.state.pollingBoothId
-            }}
-          >
+          <Link to="/viewOutput">
             <button type="submit" className="select-output-view-button">
               View
             </button>

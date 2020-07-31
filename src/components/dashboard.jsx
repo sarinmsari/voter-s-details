@@ -21,7 +21,7 @@ class Dashboard extends Component {
       } else {
         return (
           <div className="file-details">
-            <button onClick={this.onFileUpload}>Upload</button><br/>
+            <button onClick={this.onFileUpload}><h3>Upload</h3></button><br/>
             <h2>File Details:</h2>
             <p>File Name: {this.state.selectedFile.name}</p>
             <p>File Type: {this.state.selectedFile.type}</p>

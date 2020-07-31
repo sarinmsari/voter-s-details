@@ -1,3 +1,30 @@
 .select-body{
+    text-align: center;
+}
+.selection{
+    display: flex;
+    text-align: center;
+    justify-content: center;
     margin-top: 5em;
+}
+ select, .select-output-view-button{
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 12px;
+    margin: 8px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin: 10px;
+    background-color: #eeeeee;
+}
+.select-box{
+    margin: 10px;
+}
+ .select-output-view-button{
+    font-weight: bolder;
+    width: 200px;
+    margin-top: 20px;
+    color: white;
+    background-color: #4CAF50;
 }

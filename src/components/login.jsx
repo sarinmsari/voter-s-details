@@ -54,17 +54,16 @@ class login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="form-container">
         <div className="form-wrapper">
           <div className="login-header">LOG IN</div>
           <form className="login-form" onSubmit={this.handleSubmit} noValidate>
             <div className="email">
-              <label htmlFor="email">Email:</label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="email"
+                placeholder="Email ID"
                 onChange={this.handleChange}
                 noValidate
               />
@@ -74,12 +73,11 @@ class login extends Component {
               )}
             </div>
             <div className="password">
-              <label htmlFor="password">Password:</label>
               <input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="password"
+                placeholder="Password"
                 onChange={this.handleChange}
                 noValidate
               />
