@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./header";
-import { Link } from "react-router-dom";
+import { OutTable, ExcelRenderer } from "react-excel-renderer";
 import "./excelOutput.css";
 
 class ExcelOutput extends Component {
@@ -149,6 +149,21 @@ class ExcelOutput extends Component {
     }
   };
 
+  fileHandler = (event) => {
+    let fileObj = this.state.file;
+    
+    ExcelRenderer(fileObj, (error, resp) => {
+      if (error) {
+        console.log(error);
+      } else {
+        this.setState({
+          cols: resp.cols,
+          rows: resp.rows,
+        });
+      }
+    });
+  };
+
   render() {
     return (
       <div className="container">
@@ -238,13 +253,24 @@ class ExcelOutput extends Component {
             </div>
           </div>
 
-          <Link to={{ pathname: "/viewOutput", file: this.state.file }}>
-            <button type="submit" className="select-output-view-button">
-              View
-            </button>
-          </Link>
+          <button
+            type="submit"
+            className="select-output-view-button"
+            onClick={this.fileHandler}
+          >
+            View
+          </button>
         </div>
-        
+        <div className="view-output">
+          {this.state.rows && (
+            <OutTable
+              data={this.state.rows}
+              columns={this.state.cols}
+              tabelClassName="ExcelTable"
+              tableHeaderRowClassName="Heading"
+            />
+          )}
+        </div>
       </div>
     );
   }
