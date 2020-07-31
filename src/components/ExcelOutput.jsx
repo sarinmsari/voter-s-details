@@ -6,15 +6,15 @@ class ExcelOutput extends Component {
   state = {
     districtId: "",
     localBodyId: "",
+    wardId: "",
+    pollingBoothId: "",
     localBodyData: [],
     wardData: [],
   };
 
-  districtHandler = (event) => {
-    this.setState({ districtId: event.target.value });
-    this.localBodyDataUpdater();
-  };
-  localBodyDataUpdater = () => {
+  localBodyHandler = () => {
+    console.log("district id: " + this.state.districtId);
+
     if (this.state.districtId === "13") {
       this.setState({
         localBodyData: [
@@ -112,8 +112,36 @@ class ExcelOutput extends Component {
       this.setState({ localBodyData: [] });
     }
   };
-  localBodyHandler = (event) => {
-    console.log(this.state.districtId);
+
+  wardHandler = () => {
+    console.log("local body id: " + this.state.localBodyId);
+    if (this.state.districtId==="13" && this.state.localBodyId === "53") {
+      this.setState({
+        wardData: [
+          "Parappuram",
+          "Edakkadavu",
+          "Cherikkal",
+          "Pinarayi North",
+          "Olayambalam",
+          "Venduttayi",
+          "Kozhur",
+          "Panunda",
+          "Olayikkara",
+          "Eruvatty",
+          "Kappummal",
+          "Penakimetta",
+          "Panthakkapara",
+          "Ummenchira",
+          "Kizhakkumbhagum",
+          "Padannakara",
+          "Pinarayi Theru",
+          "Kolad",
+          "Pinarayi West",
+        ],
+      });
+    } else {
+      this.setState({ wardData: [] });
+    }
   };
 
   render() {
@@ -123,11 +151,13 @@ class ExcelOutput extends Component {
         <div className="output-body">
           <div className="selection">
             <div className="district">
-              <label htmlFor="district">District</label>
               <select
                 id="district"
                 name="district"
-                onChange={this.districtHandler}
+                onClick={this.localBodyHandler}
+                onChange={(event) => {
+                  this.setState({ districtId: event.target.value });
+                }}
               >
                 <option value="" selected>
                   select district
@@ -149,24 +179,55 @@ class ExcelOutput extends Component {
               </select>
             </div>
             <div className="local-body">
-              <label htmlFor="local-body">Local Body</label>
               <select
                 id="local-body"
                 name="local-body"
-                onChange={this.localBodyHandler}
+                onClick={this.wardHandler}
+                onChange={(event) => {
+                  this.setState({ localBodyId: event.target.value });
+                }}
               >
                 <option>select local body</option>
-                {console.log(this.state.localBodyData)};
                 {this.state.localBodyData.map((item, key) => (
-                  <option key={item} value={key}>
+                  <option key={key} value={key}>
                     {item}
                   </option>
                 ))}
               </select>
             </div>
             <div className="ward">
-              <label htmlFor="ward">Ward</label>
-              <select id="ward" name="ward"></select>
+              <select
+                id="ward"
+                name="ward"
+                onClick={console.log("ward id: " + this.state.wardId)}
+                onChange={(event) => {
+                  this.setState({ wardId: event.target.value });
+                }}
+              >
+                <option>select ward</option>
+                {this.state.wardData.map((item, key) => (
+                  <option key={key} value={key}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="pollingBooth">
+              <select
+                id="pollingBooth"
+                name="pollingBooth"
+                onClick={console.log("polling booth id: " + this.state.pollingBoothId)}
+                onChange={(event) => {
+                  this.setState({ pollingBoothId: event.target.value });
+                }}
+              >
+                <option>select polling booth</option>
+                {this.state.wardData.map((item, key) => (
+                  <option key={key} value={key}>
+                    {item}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
