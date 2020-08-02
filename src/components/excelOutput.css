@@ -1,41 +1,61 @@
-.select-body{
-    text-align: center;
+.select-body {
+  text-align: center;
 }
-.selection{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: 5em;
+.selection {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 5em;
 }
- select, .select-output-view-button{
-    font-style: italic;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 100%;
-    padding: 12px;
-    margin: 8px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    margin: 10px;
-    background-color: #eeeeee;
+select,
+.select-output-view-button {
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  padding: 12px;
+  margin: 8px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin: 10px;
+  background-color: #eeeeee;
 }
-.select-box{
-    margin: 10px;
+.select-box {
+  margin: 10px;
 }
- .select-output-view-button{
-    font-weight: bolder;
-    width: 200px;
-    margin-top: 20px;
-    color: white;
-    background-color: #4CAF50;
+.select-output-view-button {
+  font-weight: bolder;
+  width: 200px;
+  margin-top: 20px;
+  color: white;
+  background-color: #4caf50;
 }
-.view-output{
-    margin-top: 30px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size: 15px;
+.view-output {
+  margin-top: 30px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111111;
+  font-size: 15px;
+}
+.view-output table tr{
+  background-color: #ffffff;
+  border-radius: 1px;
+  cursor: default;
+}
+th, td:nth-child(1) {
+  display: none;
+}
+
+tr:nth-child(4){
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #eeeeee !important;
 
 }
-.view-output table tr td{
-    background-color: rgb(172, 0, 0);
+tr:nth-child(2), tr:nth-child(3){
+    background-color: #dddddd !important;
+    font-size: 17px;
+    font-weight: bolder;
+}
+.view-output table tr:hover{
+    background-color: #dddddd;
 }
